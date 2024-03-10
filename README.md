@@ -112,7 +112,8 @@ Resistência inferior à tração do concreto (NBR 6118:2023 - 8.2.5)
 >***.fctkinfj()***:  
 Resistência inferior à tração do concreto em data inferior aos 28 dias, desde que fckj >= 7MPa (NBR 6118:2023 - 8.2.5)  
 
->***.fctksup()***: Resistência superior à tração do concreto (NBR 6118:2023 - 8.2.5)  
+>***.fctksup()***:  
+Resistência superior à tração do concreto (NBR 6118:2023 - 8.2.5)  
 
 >***.fctksupj()***:  
 Resistência superior à tração do concreto em data inferior aos 28 dias, desde que fckj >= 7MPa (NBR 6118:2023 - 8.2.5)  
@@ -132,7 +133,7 @@ Módulo de elasticidade ou módulo de deformação tangente inicial do concreto 
 >***.Ecs()***:  
 Módulo de deformação secante do concreto (NBR 6118: 2023 - 8.2.8)
 
->***sigma_max_c_ato()***:  
+>***.sigma_max_c_ato()***:  
 ELU do concreto protendido no ATO (NBR 6118:2023 - 17.2.4.3.2): Tensão máxima de compressão
 
 >***.sigma_max_t_ato()***:  
