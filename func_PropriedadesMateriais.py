@@ -5,39 +5,57 @@
 #############################################################################################################################
 #############################################################################################################################
 
-# O objetivo deste programa é, dados parâmetros báicos, o programa retornará diversas informações sobre o material.
-
-#############################################################################################################################
-#######################################            PROPRIEDADE DO CONCRETO            #######################################
-#############################################################################################################################
-
-'''
-O objetivo desta classe é, dado o fck, a função retornará diversas informações sobre o concreto.
-    Todas as tensões são retornadas em MPa.
-
-'''
+######## LER READ.ME ########
+######## LER READ.ME ########
+######## LER READ.ME ########
 
 import numpy as np
 import math
 
 class Concreto:
-    '''## INPUTS:
-       
-    fck ===> Resistência característica à compressão em MPa.
-
-    dias ===> [opcional] data que se deseja avaliar o concreto. Caso não seja definida será utilizado o valor de 28 dias.
-
-    gama_c_ ===> [opcional] coeficiente de ponderação de resistência do concreto. Caso não seja definida será utilizado o valor de 1.4.
-
-    alfa_e ===> [opcional] fator alfa e que varia conforme o agregado utilizado no concreto (ver NBR 6118:2023 - 8.2.8). A sugestão inicial é 0.8, valor aproximado para o Rio de Janeiro.
-
-    alfa_fator ===> [opcional] fator alfa, utilizado para determinar a tensão cujo concreto começa a fissurar (também utilizado no momento de fissuração). Quando não infomado será utilizado como 1.5. (ver NBR 6118:2023 - 17.3.1)
-
-    epsilon_c ===> [opcional] deformação específica que a peça está imposta, caso comprimida. Quando não determinado será adotado 0.002.
-
-    epsilon_t ===> [opcional] deformação específica que a peça está imposta, caso tracionada. Quando não determinado será adotado 0.00015.
-    
     '''
+    Concreto
+
+    Tenta reunir as diversas propriedades básicas do concreto.
+
+    ### INPUTS
+    São divididos em Obrigatório e Opcionais. Os Obrigatórios devem sempre ser inseridos manualmente, já os Opcionais vem com um valor pré-definido (que deve ser avaliado se está adequado) que pode ser observado no tópico mais adiante.
+
+
+
+    - **Obrigatórios**:
+
+    - [fck= __ ] : Resistência característica à compressão em MPa.
+
+    - Opcionais:
+
+    - [dias = 28] : Data que se deseja avaliar o concreto;
+    - [gama_c = 1.4] : Coeficiente de ponderação de resistência do concreto;
+    - [alfa_e = 0.8] : Fator alfa e que varia conforme o agregado utilizado no concreto (ver NBR 6118:2023 - 8.2.8). A sugestão inicial é 0.8, valor aproximado para o Rio de Janeiro;
+    - [alfa_fator = 1.5] : Fator alfa, associado a forma geométrica do elemento analisado. É utilizado para determinar o momento de fissuração, entre outras aplicações. Ver NBR 6118:2023 - 17.3.1;
+    - [epsilon_c = 0.002] : Deformação específica que a peça está imposta, caso comprimida;
+    - [epsilon_t = 0.00015] : Deformação específica que a peça está imposta, caso tracionada.
+
+
+    A seguir algumas formas de atribuir a uma variável uma classe (#HOLD: depois ver a forma correta tecnicamente de escrever isso).
+
+
+    ```
+    #Ex 1 (input simplificado, apenas definindo o fck e aceitando opcionais conforme configurado):
+    c30 = Concreto(30)
+
+    #Ex 2 (input completo):
+    c35 = Concreto(fck = 35, dias = 14, gama_c = 1.1, alfa_e = 0.9, alfa_fator = 1.2, epsilon_c = 0.001, epsilon_t = 0.0001)
+
+    #Ex 3 (dependendo de outra variável):
+    conc = 40
+    c40 = Concreto(fck = conc)
+
+    #Ex 4 (conforme ordem dos inputs):
+    c45 = Concreto(45, 7, 1.4, 1.0)
+    ```
+    '''
+
     def __init__(self, fck, dias = 28, gama_c = 1.4, alfa_e = 0.8, alfa_fator = 1.5, epsilon_c = 0.002, epsilon_t = 0.00015):
         self.fck = fck          ## HOLD: FAZER TRATAMENTO PARA NÃO ACEITAR FCK MENOR QUE 20MOA OU MAIOR QUE 90MPA
         self.dias = dias
